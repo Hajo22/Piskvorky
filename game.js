@@ -20,4 +20,21 @@ let board = [
     "","",""
 ];
 
+function play(pos){
+    if(moveComputer == false){
+        if(!board[pos] && isWinner == false){
+            board[pos] = p1;
+            buttons[pos].innerHTML = p1;
+            buttons[pos].style.backgroundColor = "green";
+            moveComputer = true;
+            moves++;
+            checkWin();
+            if(isWinner == false){
+                playPc();
+            }
+        }
+    }
 
+    
+
+}
