@@ -14,4 +14,10 @@ let score = {
 const scoreText = document.getElementById("score");
 let buttons = document.getElementsByTagName("button");
 
+let board = [
+    "","","",
+    "","","",
+    "","",""
+];
+
 
