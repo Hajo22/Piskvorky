@@ -35,6 +35,19 @@ function play(pos){
         }
     }
 
-    
-
+    function playPc(){
+        let rnd = Math.floor(Math.random() * 9);
+        if(!board[rnd]){
+            board[rnd] = p2;
+            buttons[rnd].innerHTML = p2;
+            buttons[rnd].style.backgroundColor = "brown";
+            moveComputer = false;
+            moves++;
+            checkWin();
+        }else{
+            playPc();
+        }
+    }
 }
+
+
