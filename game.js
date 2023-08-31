@@ -50,4 +50,40 @@ function play(pos){
     }
 }
 
-
+function checkWin(){
+    if(moves >= 5){
+        if(
+            board[0] == p1 && board[1] == p1 && board[2] == p1 ||
+            board[3] == p1 && board[4] == p1 && board[5] == p1 ||
+            board[6] == p1 && board[7] == p1 && board[8] == p1 ||
+            board[0] == p1 && board[3] == p1 && board[6] == p1 ||
+            board[1] == p1 && board[4] == p1 && board[7] == p1 ||
+            board[2] == p1 && board[5] == p1 && board[8] == p1 ||
+            board[0] == p1 && board[4] == p1 && board[8] == p1 ||
+            board[2] == p1 && board[4] == p1 && board[6] == p1
+        ){
+            isWinner = true;
+            score.player++;
+            updateScore();
+        }
+        else if(
+            board[0] == p2 && board[1] == p2 && board[2] == p2 ||
+            board[3] == p2 && board[4] == p2 && board[5] == p2 ||
+            board[6] == p2 && board[7] == p2 && board[8] == p2 ||
+            board[0] == p2 && board[3] == p2 && board[6] == p2 ||
+            board[1] == p2 && board[4] == p2 && board[7] == p2 ||
+            board[2] == p2 && board[5] == p2 && board[8] == p2 ||
+            board[0] == p2 && board[4] == p2 && board[8] == p2 ||
+            board[2] == p2 && board[4] == p2 && board[6] == p2
+        ){
+            isWinner = true;
+            score.ai++;
+            updateScore();
+        }else{
+            if(moves >= 9){
+                isWinner = true;
+                alert("Draw!");
+            }
+        }
+    }
+}
