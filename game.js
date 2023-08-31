@@ -1,10 +1,10 @@
 console.log("Piskvorky");
 
 //Premeny
-const p1 = "X", p2 = "O";
-let moves = 0;
-let moveComputer = false;
-let isWinner = false;
+const p1 = "X", p2 = "O"; //p1 = hráč | p2 = počítač
+let moves = 0; //Počet ťahov
+let moveComputer = false; //Zisti kto je na rade
+let isWinner = false; //Skontroluje či už existuje víťaz
 
 let score = {
     player: 0,
@@ -14,12 +14,14 @@ let score = {
 const scoreText = document.getElementById("score");
 let buttons = document.getElementsByTagName("button");
 
+//Vytvorenie hracieho poľa
 let board = [
     "","","",
     "","","",
     "","",""
 ];
 
+//Funkcia pre hranie hráča
 function play(pos){
     if(moveComputer == false){
         if(!board[pos] && isWinner == false){
@@ -35,6 +37,7 @@ function play(pos){
         }
     }
 
+    //Funkcia pre hranie počítača
     function playPc(){
         let rnd = Math.floor(Math.random() * 9);
         if(!board[rnd]){
@@ -50,8 +53,10 @@ function play(pos){
     }
 }
 
+//Funkcia pre zistenie výhry alebo remízy
 function checkWin(){
     if(moves >= 5){
+        //Overenie výhry hráča
         if(
             board[0] == p1 && board[1] == p1 && board[2] == p1 ||
             board[3] == p1 && board[4] == p1 && board[5] == p1 ||
@@ -66,6 +71,7 @@ function checkWin(){
             score.player++;
             updateScore();
         }
+        //Overenie výhry počítača
         else if(
             board[0] == p2 && board[1] == p2 && board[2] == p2 ||
             board[3] == p2 && board[4] == p2 && board[5] == p2 ||
@@ -82,12 +88,13 @@ function checkWin(){
         }else{
             if(moves >= 9){
                 isWinner = true;
-                alert("Draw!");
+                alert("Remíza!");
             }
         }
     }
 }
 
+//Funkcia pre resetovanie hry
 function resetGame(){
     for(let i = 0; i < board.length; i++){
         board[i] = "";
@@ -99,6 +106,7 @@ function resetGame(){
     isWinner = false;
 }
 
+//Funkcia pre aktualizovanie skóre
 function updateScore(){
-    scoreText.innerHTML = `Hrac: ${score.player} Pocitac: ${score.ai}`;
+    scoreText.innerHTML = `Hráč: ${score.player} Počítač: ${score.ai}`;
 }
