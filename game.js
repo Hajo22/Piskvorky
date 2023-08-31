@@ -98,3 +98,7 @@ function resetGame(){
     moveComputer = false;
     isWinner = false;
 }
+
+function updateScore(){
+    scoreText.innerHTML = `Hrac: ${score.player} Pocitac: ${score.ai}`;
+}
