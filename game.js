@@ -87,3 +87,14 @@ function checkWin(){
         }
     }
 }
+
+function resetGame(){
+    for(let i = 0; i < board.length; i++){
+        board[i] = "";
+        buttons[i].innerHTML = "-";
+        buttons[i].style.backgroundColor = "gray";
+    }
+    moves = 0;
+    moveComputer = false;
+    isWinner = false;
+}
